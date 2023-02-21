@@ -60,7 +60,7 @@ class SEMOR{
 		/*
 		$pole["url"] - www projektu
 		$pole["https"] - bìží na https A/N
-		$pole["engine"] - GS (Google/Seznam), GB (Google)
+		
 		$pole["lang"] - (CZ,SK,PL,FR,DE,PL,AT) - ISO 3166-1 alpha-2
 		*/
 		
