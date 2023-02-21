@@ -4,6 +4,16 @@ include "semor_api.php";
 
 SEMOR::$token = "XXX";
 
+/*
+frekvency
+1 - každý den
+3 - každé 3dny
+5 - každých 5 dní
+7 - každých 7 dní
+14 - každých 14 dní
+*/
+
+
 //Uprava projektu
 //upravuje se vše co je poslano, nejlépe vyplnuji jen to co chci zmìnit
 $data = array(

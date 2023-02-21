@@ -4,6 +4,15 @@ include "semor_api.php";
 
 SEMOR::$token = "XXX";
 
+/*
+frekvency
+1 - kadı den
+3 - kadé 3dny
+5 - kadıch 5 dní
+7 - kadıch 7 dní
+14 - kadıch 14 dní
+*/
+
 //Jen zaloení projektu, bez automatického mìøení pozic
 $data = array(
 	"url"=>"domena.tld",
