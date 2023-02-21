@@ -4,10 +4,19 @@ include "semor_api.php";
 
 SEMOR::$token = "XXX";
 
+//Jen založení projektu, bez automatického mìøení pozic
 $data = array(
 	"url"=>"domena.tld",
 	"https"=>"A",
 	"lang"=>"CZ"
+);
+
+//Jen založení projektu, s mìøením pozic každý den
+$data = array(
+	"url"=>"domena.tld",
+	"https"=>"A",
+	"lang"=>"CZ",
+	"frekvency"=>1
 );
 
 
