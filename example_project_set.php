@@ -25,6 +25,12 @@ $data = array(
 	"frekvency"=>0
 );
 
+//Uprava projektu - logicke smazani projektu, pøes status = A je možé projekt znovu kdykoliv aktivovat
+$data = array(
+	"idp"=>1,//povinny parametr, ID v systému SEMOR
+	"status"=>"N"
+);
+
 
 $result = SEMOR::SetProject($data);
 if($result["status"] == 200){//zalozen novy projekt
