@@ -91,21 +91,40 @@ class SEMOR{
 	}
 
 	static function GetProjectList(){
-		//Výpis všech projektù pro daný token
-		
+		//Výpis všech projektù pro daný token		
 		$url = "project_list";
 		return SEMOR::send($url,"{}");
 	}
 
+	static function PutKeyword($pole){
+		//Výpis seznamu klíèových slov s hodnotou o posledním mìøení
+		/*
+		$pole["idp"] - ID projektu
+		$pole["keyword"][0]["key"] = "slovo" - UTF-8
+		$pole["keyword"][0]["idv"] = 4 - možnost poslat vlastni ID podle, kterého lze následnì statistiky parovat hodnota int(11)
+		*/		
+		$url = "keyword_put";
+		return SEMOR::send($url,SEMOR::Data($pole));
+	}
 
+	static function SetKeyword($pole){
+		//Výpis seznamu klíèových slov s hodnotou o posledním mìøení
+		/*
+		$pole["idp"] - ID projektu
+		$pole["keyword"]["idk"][428]["status"] = "N" - 428 - ID slova v systemu, status A/N (logicke smazani,aktivovani)
+		nebo
+		$pole["keyword"]["idv"][123]["status"] = "N" - 123 - vlastní ID slova, pokud bylo zadáno pøi vkládání slova, status A/N (logicke smazani,aktivovani)
+		
+		*/		
+		$url = "keyword_set";
+		return SEMOR::send($url,SEMOR::Data($pole));
+	}
 
 	static function GetKeywordList($pole){
 		//Výpis seznamu klíèových slov s hodnotou o posledním mìøení
 		/*
 		$pole["idp"] - ID projektu
-	
-		*/
-		
+		*/		
 		$url = "keyword_list";
 		return SEMOR::send($url,SEMOR::Data($pole));
 	}
