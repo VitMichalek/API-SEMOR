@@ -2,7 +2,8 @@
 class SEMOR{
 	static $token = "";
 	static $jsonOutput = false; //defaultne vraci vysledek jako JSON, false => vrací Array()
-	static $server = "https://api.semor.cz/"; 
+	static $server = "https://api.semor.cz/";
+	
 
 	public function __construct(){
 		SEMOR::testToken();
@@ -10,7 +11,7 @@ class SEMOR{
 
 	static function testToken(){
 		if(strlen(SEMOR::$token) != 45) {
-			echo "Chybnì zadaný token. Zkontrolujte své nastavení";
+			echo json_encode(array("error"=>"Chybnì zadaný token. Zkontrolujte své nastavení"));
 			return;
 		}
 	}
@@ -42,7 +43,7 @@ class SEMOR{
 		if(is_array($data) && count($data)!=0){			
 			return json_encode($data);			
 		}else{
-			echo "Data v požadavku nejsou vyplnìna!";
+			return json_encode(array("error"=>"Data nejsou vyplnena v poradku"));
 			return;
 		}
 	}
@@ -63,7 +64,9 @@ class SEMOR{
 		$pole["frekvency"] - jak èasto mìøit pozice(automatizovanì) 1,3,5 
 		$pole["lang"] - (CZ,SK,PL,FR,DE,PL,AT) - ISO 3166-1 alpha-2
 		*/
-		
+		if(!isset($pole["idp"]) || (isset($pole["idp"]) && $pole["idp"] == "")){
+			return json_encode(array("error"=>"IDP is required"));
+		}
 		$url = "project_put";
 		return SEMOR::send($url,SEMOR::Data($pole));
 	}
@@ -80,7 +83,9 @@ class SEMOR{
 		$pole["lang"] - (CZ,SK,PL,FR,DE,PL,AT) - ISO 3166-1 alpha-2
 		$pole["status"] - A/aktivni, N/nekativní(logické smazaní,k dispozici v archivu k obnovì)
 		*/
-		
+		if(!isset($pole["idp"]) || (isset($pole["idp"]) && $pole["idp"] == "")){
+			return json_encode(array("error"=>"IDP is required"));
+		}
 		$url = "project_set";
 		return SEMOR::send($url,SEMOR::Data($pole));
 	}
