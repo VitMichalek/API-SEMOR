@@ -2,7 +2,7 @@
 class SEMOR{
 	static $token = "";
 	static $jsonOutput = false; //defaultne vraci vysledek jako JSON, false => vrací Array()
-	static $server = "https://api.semor.cz/api/"; 
+	static $server = "https://api.semor.cz/"; 
 
 	public function __construct(){
 		SEMOR::testToken();
@@ -10,7 +10,7 @@ class SEMOR{
 
 	static function testToken(){
 		if(strlen(SEMOR::$token) != 45) {
-			echo "Chybnì zadaný token. Zkontrolujte své nastavení v config.php";
+			echo "Chybnì zadaný token. Zkontrolujte své nastavení";
 			return;
 		}
 	}
@@ -30,7 +30,7 @@ class SEMOR{
 		curl_setopt($ch,CURLOPT_POST, count($postData));
 		curl_setopt($ch,CURLOPT_POSTFIELDS, $postData);   
 		
-		curl_setopt($ch,CURLOPT_URL,$url);
+		curl_setopt($ch,CURLOPT_URL,SEMOR::$server.$url);
 		$output=curl_exec($ch);
 
 		curl_close($ch);
@@ -51,7 +51,7 @@ class SEMOR{
 	static function CreditCheck(){
 		//Vrátí poèet kreditù, který je k dispozici
 		
-		$url = SEMOR::$server."kredit_check";
+		$url = "kredit_check";
 		return SEMOR::send($url,"{}");
 	}
 
@@ -64,7 +64,7 @@ class SEMOR{
 		$pole["lang"] - (CZ,SK,PL,FR,DE,PL,AT) - ISO 3166-1 alpha-2
 		*/
 		
-		$url = SEMOR::$server."project_put";
+		$url = "project_put";
 		return SEMOR::send($url,SEMOR::Data($pole));
 	}
 
@@ -81,14 +81,14 @@ class SEMOR{
 		$pole["status"] - A/aktivni, N/nekativní(logické smazaní,k dispozici v archivu k obnovì)
 		*/
 		
-		$url = SEMOR::$server."project_set";
+		$url = "project_set";
 		return SEMOR::send($url,SEMOR::Data($pole));
 	}
 
 	static function GetProjectList(){
 		//Výpis všech projektù pro daný token
 		
-		$url = SEMOR::$server."project_list";
+		$url = "project_list";
 		return SEMOR::send($url,"{}");
 	}
 
@@ -98,10 +98,10 @@ class SEMOR{
 		//Výpis seznamu klíèových slov s hodnotou o posledním mìøení
 		/*
 		$pole["idp"] - ID projektu
-		$pole["active"] - 1/0 vypsání jen aktivích/uživatelem odstranìných odkazù
+	
 		*/
-		$this->method = "G";
-		$url = SEMOR::$server."GetKeywordList";
+		
+		$url = "keyword_list";
 		return SEMOR::send($url,SEMOR::Data($pole));
 	}
 
