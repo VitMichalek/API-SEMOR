@@ -12,6 +12,7 @@ TOKEN pro komunikaci najdete po přihlášení v administrace->nastavení
 - PutProject - založení nového projektu
 - SetProject - editace/smazani projektu
 - GetProjectList - výpis všech projektů
+- GetProjectIndex - vrátí počet indexovaných stánek za posledních 60 dní
 
 #KLÍČOVÁ SLOVA
 - PutKeyword - vložení nových slov k projektu
