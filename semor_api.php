@@ -129,6 +129,15 @@ class SEMOR{
 		return SEMOR::send($url,SEMOR::Data($pole));
 	}
 
+	static function GetProjectIndex(){
+		//Vrátí poèet indexovaných stránek za posledních 60 dní
+		/*
+		$pole["idp"] - ID projektu
+		*/		
+		$url = "project_index";
+		return SEMOR::send($url,SEMOR::Data($pole));
+	}
+
 	
 
 }
