@@ -12,7 +12,7 @@ TOKEN pro komunikaci najdete po přihlášení v administrace->nastavení
 - PutProject - založení nového projektu
 - SetProject - editace/smazani projektu
 - GetProjectList - výpis všech projektů
-- GetProjectIndex - vrátí počet indexovaných stánek za posledních 60 dní
+- GetProjectIndex - vrátí počet indexovaných stánek 
 
 #KLÍČOVÁ SLOVA
 - PutKeyword - vložení nových slov k projektu
@@ -21,3 +21,11 @@ TOKEN pro komunikaci najdete po přihlášení v administrace->nastavení
 
 #SYSTEM
 - CreditCheck - vrátí počet kreditů, které jsou k dispozici
+
+
+#PŘIPRAVUJE SE
+- GetKeywordHistory - informace o 1 klíčovém slovu (historie pozic)
+- GetKeywordSERP - výpis výsledku hledání při posledním měření
+- GetKeywordChangePage - změny vstupní stránky v čase
+
+- 
