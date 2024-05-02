@@ -6,45 +6,52 @@ SEMOR::$token = "XXX";
 
 /*
 frekvency
-1 - každý den
-3 - každé 3dny
-5 - každých 5 dní
-7 - každých 7 dní
-14 - každých 14 dní
+1 - kaï¿½dï¿½ den
+3 - kaï¿½dï¿½ 3dny
+5 - kaï¿½dï¿½ch 5 dnï¿½
+7 - kaï¿½dï¿½ch 7 dnï¿½
+14 - kaï¿½dï¿½ch 14 dnï¿½
 */
 
 
 //Uprava projektu
-//upravuje se vše co je poslano, nejlépe vyplnuji jen to co chci zmìnit
+//upravuje se vï¿½e co je poslano, nejlï¿½pe vyplnuji jen to co chci zmï¿½nit
 $data = array(
-	"idp"=>1,//povinny parametr, ID v systému SEMOR
+	"idp"=>1,//povinny parametr, ID v systï¿½mu SEMOR
 	"url"=>"domena.tld",
 	"https"=>"A",
 	"lang"=>"CZ"
 );
 
-//Uprava projektu - jen zmìna frekvence mìøení
+//Uprava projektu - jen zmï¿½na frekvence mï¿½ï¿½enï¿½
 $data = array(
-	"idp"=>1,//povinny parametr, ID v systému SEMOR
+	"idp"=>1,//povinny parametr, ID v systï¿½mu SEMOR
 	"frekvency"=>5
 );
 
-//Uprava projektu - zrušení pravidelného meøení pozic
+//Uprava projektu - zruï¿½enï¿½ pravidelnï¿½ho meï¿½enï¿½ pozic
 $data = array(
-	"idp"=>1,//povinny parametr, ID v systému SEMOR
+	"idp"=>1,//povinny parametr, ID v systï¿½mu SEMOR
 	"frekvency"=>0
 );
 
-//Uprava projektu - logicke smazani projektu, pøes status = A je možé projekt znovu kdykoliv aktivovat
+//Uprava projektu - jednorÃ¡zovÃ© zmÄ›Å™enÃ­ pozic
 $data = array(
-	"idp"=>1,//povinny parametr, ID v systému SEMOR
+	"idp"=>1,//povinny parametr, ID v systï¿½mu SEMOR
+	"frekvency"=>99,
+	"ping_back"=>"htt..//domana.tld/"//pÅ™i dokonÄenÃ­ mÄ›Å™enÃ­ poÅ¡le ping na danou url
+);
+
+//Uprava projektu - logicke smazani projektu, pï¿½es status = A je moï¿½ï¿½ projekt znovu kdykoliv aktivovat
+$data = array(
+	"idp"=>1,//povinny parametr, ID v systï¿½mu SEMOR
 	"status"=>"N"
 );
 
 
 $result = SEMOR::SetProject($data);
 if($result["status"] == 200){//zalozen novy projekt
-	echo "Vše se uložilo v poøádku";
+	echo "Vï¿½e se uloï¿½ilo v poï¿½ï¿½dku";
 }else{
 	//error
 	print_r($result["error"]);
